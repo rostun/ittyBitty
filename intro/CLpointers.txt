@@ -1,0 +1,91 @@
+ls: lists all files and directories in the working directory.
+	-a lists all contents, including hidden files and directories
+	-l lists all contents of a directory in long format
+		ex: drwxr-xr-x 4 cc eng 4096 Jul 8 16:51 action
+			drwxr-xr-x	1. Access rights. These are actions that are permitted on a file or directory.
+			4			2. Number of hard links. This number counts the number of child directories and files. 
+							This number includes the parent directory link (..) and current directory link (.).
+			cc			3. The username of the file's owner. Here the username is cc
+			eng			4. The name of the group that owns the file. Here the group name is eng.
+			4096		5. The size of the file in bytes
+			Jul 		8 16:51	6. The date & time that the file was last modified
+			action		7. the name of the file or directory
+	-t orders files and directories by the time they were last modified.
+	**can use ls -alt to combine commands**
+pwd: print working directory, outputs the name of the current working directory.
+mkdir: creates a new directory in the working directory.
+cd: change directory, switches you into the directory you specify.
+	.. move up
+	file/file navigae directly
+touch: creates a new file inside the working directory.
+cp: copies files or directories. 
+	cp biopic/cleopatra.txt historical/
+		copies cleopatra.txt into historical director
+	cp biopic/ray.txt biopic/notorious.txt historical/
+		copies both into historical
+	touch shrek.txt
+	cp * satire/ 
+		copies shrek to satire directory 
+	cp m*.txt scifi/
+		copy of all text files starting with m into scifi/
+mv: move files
+	mv superman.txt superhero/
+	mv superman.txt superwoman.txt superhero/ (can do multiple files)
+	mv batman.txt spiderman.txt 
+		rename batman to spiderman.txt
+rm: deletes files and directories.
+	rm waterboy.txt
+	rm -r slapstick 
+		modifies behaviour of rm command, stands for recursive, permanent!!
+echo "Hello" accepts the string "Hello" as standard input, and echoes the string "Hello" back to the terminal as standard output.
+	echo "Hello" > hello.txt
+		outputs Hello into hello.txt file whether exists or not 
+cat
+	cat hello.txt
+		outputs contents of a file to the terminal
+	cat oceans.txt > continents.txt
+		overwrites continents.txt 
+	cat glaciers.txt >> rivers.txt 
+		won't overwrite, will dump first file stuff after second files stuff ends
+	cat < lakes.txt
+		takes standard input from the file on the right and inputs it into the program on the left 
+	cat volcanoes.txt | wc
+		| takes standard outputs of the command on left and pipes it as standard input to the command on the right
+		output of cat volcanoes.txt to wc, which outputs number of lines, words, and characters respectively
+	cat volcanoes.txt | wc | cat > islands.txt
+		take that ouput and put it into islands.txt
+	cat lakes.txt | sort
+		cat lakes.txt | sort > sorted-lakes.txt
+uniq : filters out adjacent, duplicate lines in a file 
+	uniq deserts.txt
+		filters out duplicate lines in files 
+	sort deserts.txt | uniq
+		alphabatizea  file and pipe the standard output to uniq 
+	sort deserts.txt | uniq > uniq-deserts.txt
+		then filter ocntents another file 
+	
+grep: global regular expression print
+	grep Mount mountains.txt
+		case sensitive
+	grep -i Mount mountains.txt 
+		case insensitive
+	grep -R Arctic /home/geography
+		/home/geography/deserts.txt:Arctic Desert
+		will list lines that contain Arctic in that directory
+	grep -Rl Arctic /home/geography
+		without colon, l = files with matches
+		/home/geography/deserts.txt		
+
+sed: strean editor, accepts standard input and modifies it based on an expression
+	sed 's/snow/rain/' forests.txt
+		s -> substituion, changes out snow for rain, will only replace the first instance
+	sed 's/snow/rain/g' forwards.txt 
+		g -> global will replace all instances 
+
+env: environment, returns list of environment variables for current user 
+	returns PATh, PWD, PS1 and HOME, etc 
+	
+	env | grep PATh
+		displays value of a single environment variable (PATH)
+		
+		
